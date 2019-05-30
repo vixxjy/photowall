@@ -1,0 +1,63 @@
+html {
+    font-size: 10px;
+}
+
+h1 {
+    font-family:'Lobster';
+    text-align: center;
+    font-size: 8rem;
+    font-weight: 100;
+    margin: 2rem 0;
+    letter-spacing: -1px;
+}
+
+/* @font-face {
+    font-family: 'Lobster';
+    src: url('https://fonts.googleapis.com/css?family=Lobster&display=swap')
+} */
+
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+
+.photo-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+}
+
+.figure {
+    flex-basis: calc(33.333% - 4rem);
+    border: 1px solid #d3d3d3;
+    padding: 2rem;
+    flex-grow: 1;
+    margin: 0 2rem 2rem 2rem;
+}
+
+.photo {
+    width: calc(100% + 4rem);
+    margin: -2rem 0rem 0rem -2rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center
+}
+
+.remove-button {
+    flex-basis: 48%;
+    color: red;
+    font-size: 15px;
+    border: 2px solid #f2f2f2;
+    line-height: 2;
+    padding: 5px;
+}
+
+.addIcon {
+    margin: 20px auto;
+    display: table;
+    padding: 40px;
+    background: url('https://image.flaticon.com/icons/svg/60/60740.svg');
+    background-size: contain;
+    border: none;
+}
