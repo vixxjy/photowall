@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## React-todo-App
+## Photowall-App
 
 This app was built with react and redux, kindly drop suggestions and tips:
 
