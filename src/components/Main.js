@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
 import Title from './Title';
-import Photowall from './Photowall'
+import Photowall from './Photowall';
+import AddPhoto from './AddPhoto';
+import { Route } from 'react-router-dom';
 
 export default class Main extends Component {
     constructor() {
         super();
         this.state = {
-            posts:  []
+            posts:  [],
+            screen: 'photos' //addPhoto
         }
 
         this.removePhoto = this.removePhoto.bind(this);
+        this.navigate = this.navigate.bind(this);
     }
 
     fetchPhotos() {
@@ -31,6 +35,12 @@ export default class Main extends Component {
         },]
     }
 
+    navigate() {
+        this.setState({
+            screen: 'addPhoto'
+        })
+    }
+
     componentDidMount() {
         const posts = this.fetchPhotos();
         this.setState({
@@ -38,11 +48,11 @@ export default class Main extends Component {
         })
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        console.log("updated safely")
-        console.log(prevState.posts)
-        console.log(this.state)
-    }
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log("updated safely")
+    //     console.log(prevState.posts)
+    //     console.log(this.state)
+    // }
 
     removePhoto(postRemoved) {
         console.log(postRemoved.description);
@@ -54,8 +64,39 @@ export default class Main extends Component {
     render() {
         return (
             <div>
-                <Title  title={'Photowall project'}/>
-                <Photowall posts={this.state.posts} onRemovePhoto={this.removePhoto}/>
+                {/* { this.state.screen === 'photos' && (
+                    <div>    
+                        <Title  title={'Photowall project'}/>
+                        <Photowall posts={this.state.posts} onRemovePhoto={this.removePhoto} onNavigate = {this.navigate}/>
+                    </div>
+                    )
+                }
+                
+                { this.state.screen === 'addPhoto' && (
+                    <div>
+                        <AddPhoto />
+                    </div>
+                    )
+                } */}
+                {/* instead of using state to control navigation lets use routes */}
+                
+                {/* effective for multiple components */}
+                <Route exact path="/" render = {() => (
+                    <div>    
+                      <Title  title={'Photowall project'}/>
+                      <Photowall posts={this.state.posts} onRemovePhoto={this.removePhoto} onNavigate = {this.navigate}/>
+                  </div>
+                )}/>
+
+                {/* <Route path="/AddPhoto" render = {() => (
+                    <div>
+                      <AddPhoto />
+                    </div>
+                )}/> */}
+
+                {/* since its a single component */}
+                <Route path="/AddPhoto" component={AddPhoto} />
+
             </div>
         )
     }

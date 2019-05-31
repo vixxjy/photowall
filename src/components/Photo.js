@@ -8,7 +8,7 @@ export default class Photo extends Component {
             return (
             <figure className="figure">
                 <img className ="photo" src={post.imageLink} alt={post.description} />
-                <figcaption><p>{post.description}</p></figcaption>
+                <figcaption><p className="text">{post.description}</p></figcaption>
                 <div className="button-container">
                     <button className="remove-button" onClick = {() => {
                         this.props.onRemovePhoto(post)

@@ -34,6 +34,10 @@ h1 {
     margin: 0 2rem 2rem 2rem;
 }
 
+.text {
+    font-size: 2rem;
+}
+
 .photo {
     width: calc(100% + 4rem);
     margin: -2rem 0rem 0rem -2rem;
