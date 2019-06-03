@@ -11,7 +11,11 @@ function Photowall(props) {
                 <Link className="addIcon" to="/AddPhoto"> + </Link>
             {/* <button onClick={props.onNavigate} className="addIcon"> + </button>  */}
                 <div className="photo-grid">
-                    {props.posts.map((post, index) => <Photo key={index} 
+                    {props.posts
+                    .sort(function(x,y){
+                        return y.id - x.id
+                    })
+                    .map((post, index) => <Photo key={index} 
                     post={post} 
                     onRemovePhoto={props.onRemovePhoto}/>)}
                 </div>

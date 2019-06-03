@@ -14,22 +14,23 @@ export default class Main extends Component {
 
         this.removePhoto = this.removePhoto.bind(this);
         this.navigate = this.navigate.bind(this);
+        // this.addedPost = this.addedPost.bind(this);
     }
 
     fetchPhotos() {
         return [    
         {
-            id: "0",
+            id: 0,
             description: "Nike snickers 1",
             imageLink: "http://picture-cdn.wheretoget.it/rq8aws-l-610x610-shoes-nike-snickers.jpg"
         },
         {
-            id: "1",
+            id: 1,
             description: "Nike snickers 2",
             imageLink: "http://picture-cdn.wheretoget.it/rq8aws-l-610x610-shoes-nike-snickers.jpg"
         },
         {
-            id: "2",
+            id: 3,
             description: "Nike snickers 3",
             imageLink: "http://picture-cdn.wheretoget.it/rq8aws-l-610x610-shoes-nike-snickers.jpg"
         },]
@@ -61,7 +62,14 @@ export default class Main extends Component {
         }))
     }
 
+    addPhoto(postSubmitted) {
+        this.setState((state) => ({
+            posts: state.posts.concat([postSubmitted])
+        }));
+    }
+
     render() {
+        console.log(this.state.posts)
         return (
             <div>
                 {/* { this.state.screen === 'photos' && (
@@ -88,14 +96,18 @@ export default class Main extends Component {
                   </div>
                 )}/>
 
-                {/* <Route path="/AddPhoto" render = {() => (
+                <Route path="/AddPhoto" render = {({history}) => (
                     <div>
-                      <AddPhoto />
+                      <AddPhoto onAddPhoto={(addedPost) => { 
+                          this.addPhoto(addedPost)
+                        // console.log(addedPost);
+                        history.push('/');
+                        }}/>
                     </div>
-                )}/> */}
+                )}/>
 
                 {/* since its a single component */}
-                <Route path="/AddPhoto" component={AddPhoto} />
+                {/* <Route path="/AddPhoto" component={AddPhoto} /> */}
 
             </div>
         )
